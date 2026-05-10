@@ -9,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 /**
  * Java wrapper for the aijsondbc native library using Java 22 FFM API.
@@ -138,12 +140,13 @@ public class AIJsonDBC {
     }
 
     /**
-     * Executes a query and returns the result as a String.
+     * Executes a query and returns the result as a JsonElement.
+     * Parses the JSON string returned by the native library using Gson.
      *
      * @param query The query string
-     * @return The query result as a String, or null on error
+     * @return The query result as a JsonElement, or null on error
      */
-    public static String query(String query) {
+    public static JsonElement query(String query) {
         int bufferSize = 1024 * 1024; // 1MB buffer
         try (Arena arena = Arena.ofConfined()) {
             MemorySegment querySeg = arena.allocateFrom(query, StandardCharsets.UTF_8);
@@ -152,11 +155,16 @@ public class AIJsonDBC {
             int result = (int) ffi_aijsondb_query.invoke(querySeg, buffer, bufferSize);
             if (result != 0) {
                 String errorMessage = buffer.getString(0);
-                throw new RuntimeException("Failed to execute query: " + errorMessage);
+                throw new RuntimeException(errorMessage);
             }
-            return buffer.getString(0);
-        } catch (Throwable e) {
-            throw new RuntimeException("Failed to execute query", e);
+            String jsonString = buffer.getString(0);
+            return JsonParser.parseString(jsonString);
+        } 
+        catch (RuntimeException e) {
+            throw e;
+        }
+        catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
 
