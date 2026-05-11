@@ -82,6 +82,22 @@ Only use the data from tools defined above to answer the question.
         }
     }
     
+    public static Agent createImporter(String fileNameImport,String fileNameData, String fileNameSchema,E_PROMPT_TEMPLATE templateType) throws java.io.IOException {
+        try {
+            AIJsonDBC.importOrLoadData(fileNameImport, fileNameData, fileNameSchema);
+            Path filePath = Path.of(fileNameSchema);
+            //System.out.println(filePath);
+            String jSchema = Files.readString(filePath);
+            String agentTemplate=getPromptTemplate(templateType);
+            String prompt = String.format(agentTemplate, jSchema);
+            Agent agent =  new Agent();
+            agent.systemprompt = prompt;
+            return agent;
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Error loading data: " + e.getMessage());
+        }
+    }
+
     private static String getPromptTemplate(E_PROMPT_TEMPLATE templateType) {
         switch (templateType) {
             case MISTRAL:

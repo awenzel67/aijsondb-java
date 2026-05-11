@@ -76,6 +76,7 @@ public class AIJsonDBC {
     private static final MethodHandle ffi_aijsondb_query;
     private static final MethodHandle ffi_aijsondb_free_data;
     private static final MethodHandle ffi_aijsondb_last_error;
+    private static final MethodHandle ffi_aijsondb_import_or_load_data;
 
     static {
         try {
@@ -90,6 +91,16 @@ public class AIJsonDBC {
                 )
             );
             
+            ffi_aijsondb_import_or_load_data = linker.downcallHandle(
+                LOOKUP.find("ffi_aijsondb_import_or_load_data").orElseThrow(),
+                FunctionDescriptor.of(
+                    ValueLayout.JAVA_INT,
+                    ValueLayout.ADDRESS,
+                    ValueLayout.ADDRESS,
+                    ValueLayout.ADDRESS
+                )
+            );
+
             ffi_aijsondb_query = linker.downcallHandle(
                 LOOKUP.find("ffi_aijsondb_query").orElseThrow(),
                 FunctionDescriptor.of(
@@ -132,6 +143,36 @@ public class AIJsonDBC {
             int result = (int) ffi_aijsondb_load_data.invoke(filenameSeg, schemaSeg);
             if (result != 0) {
                 throw new RuntimeException("Failed to load data");
+            }
+            return result;
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to load data", e);
+        }
+    }
+
+    /**
+     * Loads data from a JSON file with the given schema.
+     *
+     * @param filename Path to the Import file
+     * @param filenameJson Path to the JSON file (if not exists created from import file)
+     * @param schema   Schema definition (if not exists created from import file)
+     * @return 0 on success, non-zero on error
+     */
+    public static int importOrLoadData(String filename, String filenameJson, String schema) {
+        try (Arena arena = Arena.ofConfined()) {
+            MemorySegment filenameSeg = arena.allocateFrom(filename, StandardCharsets.UTF_8);
+            MemorySegment filenameJsonSeg = arena.allocateFrom(filenameJson, StandardCharsets.UTF_8);
+            MemorySegment schemaSeg = arena.allocateFrom(schema, StandardCharsets.UTF_8);
+            int result = (int) ffi_aijsondb_import_or_load_data.invoke(filenameSeg, filenameJsonSeg, schemaSeg);
+            if (result != 0) {
+                int bufferSize = 1024;
+                MemorySegment bufferError  = arena.allocate(bufferSize);
+                int errorResult = (int) ffi_aijsondb_last_error.invoke(bufferError, bufferSize);
+                String errorMessage = "Failed to load data";
+                if (errorResult == 0) {
+                    errorMessage = bufferError.getString(0);
+                }
+                throw new RuntimeException(errorMessage);
             }
             return result;
         } catch (Throwable e) {
