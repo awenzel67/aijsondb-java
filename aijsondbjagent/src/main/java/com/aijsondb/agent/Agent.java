@@ -5,7 +5,9 @@ import dev.langchain4j.model.chat.ChatModel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.AiServices;
+import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.agent.tool.*;
 
@@ -21,6 +23,10 @@ public class Agent {
     public enum E_PROMPT_TEMPLATE { GENERIC,MISTRAL};
     public interface AIJsonAgent {
         String chat(String userMessage);
+    }
+
+    public interface AIJsonAgentDynamicSystemMessage {
+        String chat(@MemoryId String memoryId, @UserMessage String userMessage);
     }
 
     public class AIJsonTool {
@@ -54,7 +60,7 @@ Always use the available tools to fetch data.
 Only use the data from tools defined above to answer the question.
 """;
 
-    private Agent() {
+    public Agent() {
         // Default constructor
     }
 
@@ -66,7 +72,7 @@ Only use the data from tools defined above to answer the question.
     public AIJsonTool getAiJsonTool() {
         return aiJsonTool;
     }
-    public static Agent create(String fileNameData, String fileNameSchema,E_PROMPT_TEMPLATE templateType) throws java.io.IOException {
+    public void loadData(String fileNameData, String fileNameSchema,E_PROMPT_TEMPLATE templateType) throws java.io.IOException {
         try {
             AIJsonDBC.loadData(fileNameData,fileNameSchema);
             Path filePath = Path.of(fileNameSchema);
@@ -74,15 +80,13 @@ Only use the data from tools defined above to answer the question.
             String jSchema = Files.readString(filePath);
             String agentTemplate=getPromptTemplate(templateType);
             String prompt = String.format(agentTemplate, jSchema);
-            Agent agent =  new Agent();
-            agent.systemprompt = prompt;
-            return agent;
+            this.systemprompt = prompt;
         } catch (RuntimeException e) {
             throw new RuntimeException("Error loading data: " + e.getMessage());
         }
     }
     
-    public static Agent createImporter(String fileNameImport,String fileNameData, String fileNameSchema,E_PROMPT_TEMPLATE templateType) throws java.io.IOException {
+    public void importData(String fileNameImport,String fileNameData, String fileNameSchema,E_PROMPT_TEMPLATE templateType) throws java.io.IOException {
         try {
             AIJsonDBC.importOrLoadData(fileNameImport, fileNameData, fileNameSchema);
             Path filePath = Path.of(fileNameSchema);
@@ -90,15 +94,13 @@ Only use the data from tools defined above to answer the question.
             String jSchema = Files.readString(filePath);
             String agentTemplate=getPromptTemplate(templateType);
             String prompt = String.format(agentTemplate, jSchema);
-            Agent agent =  new Agent();
-            agent.systemprompt = prompt;
-            return agent;
+            this.systemprompt = prompt;
         } catch (RuntimeException e) {
             throw new RuntimeException("Error loading data: " + e.getMessage());
         }
     }
 
-    private static String getPromptTemplate(E_PROMPT_TEMPLATE templateType) {
+    private String getPromptTemplate(E_PROMPT_TEMPLATE templateType) {
         switch (templateType) {
             case MISTRAL:
                 return agentTemplateGeneral; // For now, we use the same template. Can be customized for Mistral if needed.
