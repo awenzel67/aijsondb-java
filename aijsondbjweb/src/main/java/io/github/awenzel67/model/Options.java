@@ -1,4 +1,4 @@
-package com.aijsondbweb.model;
+package io.github.awenzel67.model;
 
 public class Options {
 

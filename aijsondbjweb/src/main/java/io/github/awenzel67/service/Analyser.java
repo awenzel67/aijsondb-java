@@ -1,7 +1,7 @@
-package com.aijsondbweb.service;
+package io.github.awenzel67.service;
 
-import com.aijsondb.agent.Agent;
-import com.aijsondbweb.model.Options;
+import io.github.awenzel67.Agent;
+import io.github.awenzel67.model.Options;
 
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;

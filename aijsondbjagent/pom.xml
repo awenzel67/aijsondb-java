@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.aijsondb.agent</groupId>
+    <groupId>io.github.awenzel67</groupId>
     <artifactId>aijsondb-agent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>AijsonDB Agent Library</name>
@@ -18,15 +18,15 @@
         <maven.compiler.target>22</maven.compiler.target>
     </properties>
 <!-- Note: The dependencies for the agent library are separate from the main aijsondb-java library. 
-//DEPS com.aijsondb:aijsondb-java:1.0.0
+//DEPS io.github.awenzel67:aijsondb-java:1.0.0
 //DEPS dev.langchain4j:langchain4j-mistral-ai:1.14.1
 //DEPS dev.langchain4j:langchain4j:1.14.1
 -->
     <dependencies>
          <dependency>
-            <groupId>com.aijsondb</groupId>
+            <groupId>io.github.awenzel67</groupId>
             <artifactId>aijsondb-java</artifactId>
-            <version>1.0.0</version>
+            <version>0.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>dev.langchain4j</groupId>

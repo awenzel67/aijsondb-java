@@ -1,7 +1,7 @@
-package com.aijsondbweb.controller;
+package io.github.awenzel67.controller;
 
-import com.aijsondbweb.model.Options;
-import com.aijsondbweb.service.Analyser;
+import io.github.awenzel67.model.Options;
+import io.github.awenzel67.service.Analyser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,0 +1,73 @@
+{
+  "employees": [
+{
+    "id": "E00001",
+    "name": "Shannon Curtis",
+    "profile": {
+        "contact": {
+            "email": "robert91@example.com",
+            "phone": "001-463-586-9672x633",
+            "address": {
+                "street": "0492 Joe Grove Suite 306",
+                "city": "West Michaelview",
+                "location": {
+                    "state": "LA",
+                    "country": "USA",
+                    "geo": {
+                        "lat": "-60.2657",
+                        "long": "47.3055",
+                        "timezone": {
+                            "name": "America/Denver",
+                            "utc_offset": "-07:00"
+                        }
+                    }
+                }
+            }
+        },
+        "projects": [
+            {
+                "id": "P655",
+                "name": "Incubate World-Class Schemas",
+                "tasks": [
+                    {
+                        "id": "T732",
+                        "description": "Synergistic asynchronous infrastructure",
+                        "assignedTo": {
+                            "id": "E00001",
+                            "name": "Shannon Curtis",
+                            "skills": {
+                                "primary": "C++",
+                                "secondary": [
+                                    "AWS",
+                                    "Node.js"
+                                ],
+                                "experience": {
+                                    "years": 5,
+                                    "domains": [
+                                        "Healthcare",
+                                        "E-commerce"
+                                    ],
+                                    "certifications": {
+                                        "current": [
+                                            "AWS Solutions Architect",
+                                            "Scrum Master"
+                                        ],
+                                        "expired": [
+                                            "CompTIA Security+"
+                                        ],
+                                        "meta": {
+                                            "verified": true,
+                                            "lastUpdated": "2025-07-22"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+    ]
+    }
