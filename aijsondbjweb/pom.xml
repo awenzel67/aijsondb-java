@@ -59,6 +59,11 @@
             <artifactId>aijsondb-java</artifactId>
             <version>0.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.commonmark</groupId>
+            <artifactId>commonmark</artifactId>
+            <version>0.21.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
