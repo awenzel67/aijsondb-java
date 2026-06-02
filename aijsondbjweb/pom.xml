@@ -13,7 +13,7 @@
     
     <groupId>io.github.awenzel67</groupId>
     <artifactId>aijsondbweb</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3</version>
     <name>aijsondbweb</name>
     <description>AI JSON DB Web - Natural Language Excel Query Application</description>
     
@@ -37,19 +37,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-        
-        <!-- Apache POI for Excel -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>5.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>5.2.5</version>
-        </dependency>
-        
+         
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -64,12 +52,12 @@
         <dependency>
             <groupId>io.github.awenzel67</groupId>
             <artifactId>aijsondb-agent</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.3</version>
         </dependency>
         <dependency>
             <groupId>io.github.awenzel67</groupId>
             <artifactId>aijsondb-java</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <version>0.0.3</version>
         </dependency>
     </dependencies>
     <build>

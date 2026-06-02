@@ -1,9 +1,9 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 25+
-//DEPS io.github.awenzel67:aijsondb-java:0.0.2-SNAPSHOT
+//DEPS io.github.awenzel67:aijsondb-java:0.0.3
 //DEPS dev.langchain4j:langchain4j-mistral-ai:1.14.1
 //DEPS dev.langchain4j:langchain4j:1.14.1
-//DEPS io.github.awenzel67:aijsondb-agent:0.0.2-SNAPSHOT
+//DEPS io.github.awenzel67:aijsondb-agent:0.0.3
 
 import io.github.awenzel67.AIJsonDBC;
 import io.github.awenzel67.Agent;
