@@ -1,0 +1,250 @@
+
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "employees": {
+            "type": "array",
+            "description": "List of employees",
+            "items": {
+                "type": "object",
+                "description": "An employee record",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the employee"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the employee"
+                    },
+                    "profile": {
+                        "type": "object",
+                        "description": "Profile details of the employee",
+                        "properties": {
+                            "contact": {
+                                "type": "object",
+                                "description": "Contact information of the employee",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "description": "Email address of the employee"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "description": "Phone number of the employee"
+                                    },
+                                    "address": {
+                                        "type": "object",
+                                        "description": "Address details of the employee",
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "description": "Street address of the employee"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "description": "City of the employee"
+                                            },
+                                            "location": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "state": {
+                                                        "type": "string",
+                                                        "description": "State of the employee"
+                                                    },
+                                                    "country": {
+                                                        "type": "string",
+                                                        "description": "Country of the employee"
+                                                    },
+                                                    "geo": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "lat": {
+                                                                "type": "string",
+                                                                "description": "Latitude of the employee's location"
+                                                            },
+                                                            "long": {
+                                                                "type": "string",
+                                                                "description": "Longitude of the employee's location"
+                                                            },
+                                                            "timezone": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "description": "Name of the timezone"
+                                                                    },
+                                                                    "utc_offset": {
+                                                                        "type": "string",
+                                                                        "description": "UTC offset of the timezone"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "name",
+                                                                    "utc_offset"
+                                                                ]
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "city",
+                                            "street"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "address",
+                                    "email",
+                                    "phone"
+                                ]
+                            },
+                            "projects": {
+                                "type": "array",
+                                "description": "Projects assigned to the employee",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "Unique identifier for the project"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "Name of the project"
+                                        },
+                                        "tasks": {
+                                            "type": "array",
+                                            "description": "Tasks under the project",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "description": "Unique identifier for the task"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "description": "Description of the task"
+                                                    },
+                                                    "assignedTo": {
+                                                        "type": "object",
+                                                        "description": "Details of the employee assigned to the task",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "description": "Unique identifier for the assigned employee"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "description": "Name of the assigned employee"
+                                                            },
+                                                            "skills": {
+                                                                "type": "object",
+                                                                "description": "Skills of the assigned employee",
+                                                                "properties": {
+                                                                    "primary": {
+                                                                        "type": "string",
+                                                                        "description": "Primary skill of the employee"
+                                                                    },
+                                                                    "secondary": {
+                                                                        "type": "array",
+                                                                        "description": "Secondary skills of the employee",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "experience": {
+                                                                        "type": "object",
+                                                                        "description": "Experience details of the employee",
+                                                                        "properties": {
+                                                                            "years": {
+                                                                                "type": "integer",
+                                                                                "description": "Years of experience"
+                                                                            },
+                                                                            "domains": {
+                                                                                "type": "array",
+                                                                                "description": "Domains of expertise",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "certifications": {
+                                                                                "type": "object",
+                                                                                "description": "Certifications held by the employee",
+                                                                                "properties": {
+                                                                                    "current": {
+                                                                                        "type": "array",
+                                                                                        "description": "Currently valid certifications",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "expired": {
+                                                                                        "type": "array",
+                                                                                        "description": "Expired certifications",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "meta": {
+                                                                                        "type": "object",
+                                                                                        "description": "Metadata about certifications",
+                                                                                        "properties": {
+                                                                                            "verified": {
+                                                                                                "type": "boolean",
+                                                                                                "description": "Whether the certification is verified"
+                                                                                            },
+                                                                                            "lastUpdated": {
+                                                                                                "type": "string",
+                                                                                                "description": "Last updated timestamp for the certifications"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "name"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "assignedTo",
+                                                    "description"
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "name",
+                                        "id"
+                                    ]
+                                }
+                            }
+                        },
+                        "required": [
+                            "contact"
+                        ]
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "profile"
+                ]
+            }
+        }
+    },
+    "required": [
+        "employees"
+    ]
+}
