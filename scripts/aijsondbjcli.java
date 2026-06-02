@@ -1,6 +1,6 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 //JAVA 25+
-//DEPS io.github.awenzel67:aijsondb-java:0.0.2-SNAPSHOT
+//DEPS io.github.awenzel67:aijsondb-java:0.0.3
 import io.github.awenzel67.AIJsonDBC;
 void main(String... args) {
     try {
