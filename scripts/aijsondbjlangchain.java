@@ -20,9 +20,13 @@ import dev.langchain4j.agent.tool.*;
 void main(String... args) {
     try {
         //Agent aiJsonAgent = Agent.create("../data/500 KB_V2.json","../data/employeeSchemaDescription_V2.json",Agent.E_PROMPT_TEMPLATE.GENERIC);
-       
+        String FILE_URL="https://www.berlin.de/sen/bildung/service/daten/kitaliste-nov-2025.xlsx";
+        String FILE_NAME="kitaliste-nov-2025.xlsx";
+        InputStream in = new URI(FILE_URL).toURL().openStream();
+        Files.copy(in, Paths.get(FILE_NAME), StandardCopyOption.REPLACE_EXISTING);
+
         Agent aiJsonAgent = new Agent();
-        aiJsonAgent.importData("C:/NHKI/data/talktodataexcel/kitaliste-nov-2025.xlsx","../data/excel_temp_kita.json","../data/excel_temp_kita_schema.json",Agent.E_PROMPT_TEMPLATE.GENERIC);
+        aiJsonAgent.importData(FILE_NAME,"excel_temp_kita.json","excel_temp_kita_schema.json",Agent.E_PROMPT_TEMPLATE.GENERIC);
         System.out.println("Data loaded successfully.");
         String apiKey = System.getenv("MISTRAL_API_KEY");
         if (apiKey == null || apiKey.isEmpty()) {
@@ -54,6 +58,14 @@ void main(String... args) {
         System.out.println(answer);
         */
        {
+        String userMessage = "Which daycare center from the table offers the most places?";
+         System.out.println("User message: " + userMessage);
+        String answer = agent.chat(userMessage);
+        System.out.println("Answer: " + answer);
+       }
+
+       /*
+       {
         String userMessage = "Wieviel Kitas sind in der Tabelle mit Kitas aufgeführt?";
          System.out.println("User message: " + userMessage);
         String answer = agent.chat(userMessage);
@@ -83,6 +95,7 @@ void main(String... args) {
         String answer = agent.chat(userMessage);
         System.out.println("Answer: " + answer);
        }
+    */
     } 
     catch (Exception e) {
         System.err.println("Error loading data: " + e.getMessage());
