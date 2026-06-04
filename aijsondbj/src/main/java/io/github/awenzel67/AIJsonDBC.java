@@ -151,7 +151,7 @@ public class AIJsonDBC {
     }
 
     /**
-     * Loads data from a JSON file with the given schema.
+     * Import data from File (e.g. *.xlsx for Excel) into JSON Object und JSON Schema. JSON Object and JSON Schema are sfaed to the file using filenameJson and schema parameter.
      *
      * @param filename Path to the Import file
      * @param filenameJson Path to the JSON file (if not exists created from import file)
