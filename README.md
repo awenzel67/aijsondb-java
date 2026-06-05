@@ -4,7 +4,7 @@ Java bindings for aijsondb - a thin wrapper on the [aijsondb C++ library](https:
 
 ## Overview
 
-AIJsonDB-Java provides Java bindings for the aijsondb library, enabling JSON data querying from Java applications. It uses Java 22's Foreign Function & Memory API (FFM API, JEP 454) to interface with the native aijsondb C++ library, offering a seamless integration experience.
+AIJsonDB-Java provides Java bindings for the aijsondb library, enabling JSON data querying with JavaScript from Java applications. It uses Java 22's Foreign Function & Memory API (FFM API, JEP 454) to interface with the native aijsondb C++ library, offering a seamless integration experience.
 
 ## Installation
 
