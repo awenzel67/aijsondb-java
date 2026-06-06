@@ -13,7 +13,7 @@ public class Options {
     public Options() {
         this.modelProvider = ModelProvider.MISTRAL;
         this.apiKey = System.getenv("MISTRAL_API_KEY");
-        this.modelName = "mistral-large-latest";
+        this.modelName = "";
     }
 
     public Options(ModelProvider modelProvider, String apiKey, String modelName) {

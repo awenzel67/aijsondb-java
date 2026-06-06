@@ -42,6 +42,7 @@ public class Analyser {
                 Options.ModelProvider modelType=options.getModelProvider();
                 System.out.println("Using model: " + modelType);
                 ChatModel model = null;
+                options.setModelName("");
                 if (modelType==Options.ModelProvider.MISTRAL) {
                     String apiKey = System.getenv("MISTRAL_API_KEY");
                     if (apiKey == null || apiKey.isEmpty()) {
@@ -54,21 +55,28 @@ public class Analyser {
                         .temperature(0.0) // deterministic output
                         .maxTokens(2000)
                         .build();
+                    options.setModelName("mistral-large-latest");
                 
                 } 
                 else if (modelType==Options.ModelProvider.OPENAI) {
+                    String apiKey = System.getenv("OPENAI_API_KEY");
+                    if (apiKey == null || apiKey.isEmpty()) {
+                        System.err.println("Error: Please set OPENAI_API_KEY environment variable.");
+                        return;
+                    }
                     // Example for GPT4All local model
                 model = OpenAiChatModel.builder()
-                    .apiKey(System.getenv("OPENAI_API_KEY"))
+                    .apiKey(apiKey)
                     .modelName("gpt-5.4-mini")
                     .build();
+                    options.setModelName("gpt-5.4-mini");
                 }
                 else if (modelType==Options.ModelProvider.OLLAMA) {
                     // Example for GPT4All local model
-                    model = OllamaChatModel.builder()
-                        .modelName(options.getModelName())
-                        .build();
-                    String ollamaUrl = "http://192.168.0.124:11434";
+                    String ollamaUrl = System.getenv("OLLAMA_URL");
+                    if (ollamaUrl == null || ollamaUrl.isEmpty()) {
+                        ollamaUrl = "http://localhost::11434"; // default URL
+                    }
                     model = OllamaChatModel.builder()
                     .baseUrl(ollamaUrl)
                     .temperature(0.0)
@@ -78,6 +86,7 @@ public class Analyser {
                     .think(false) // enables the THINK tool which allows the model to decide when to call tools and when to think
                     .modelName("qwen3.6:35b-a3b")
                     .build();
+                    options.setModelName("qwen3.6:35b-a3b");
                 }
                 else {
                     System.err.println("Unsupported model type: " + modelType);
