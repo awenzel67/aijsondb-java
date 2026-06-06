@@ -13,7 +13,7 @@
     
     <groupId>io.github.awenzel67</groupId>
     <artifactId>aijsondbweb</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4-SNAPSHOT</version>
     <name>aijsondbweb</name>
     <description>AI JSON DB Web - Natural Language Excel Query Application</description>
     
@@ -58,6 +58,21 @@
             <groupId>io.github.awenzel67</groupId>
             <artifactId>aijsondb-java</artifactId>
             <version>0.0.3</version>
+        </dependency>
+         <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-mistral-ai</artifactId>
+            <version>1.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-open-ai</artifactId>
+            <version>1.14.1</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.langchain4j</groupId>
+            <artifactId>langchain4j-ollama</artifactId>
+            <version>1.14.1</version>
         </dependency>
     </dependencies>
     <build>

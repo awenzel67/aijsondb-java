@@ -1,6 +1,6 @@
 package io.github.awenzel67;
 import io.github.awenzel67.AIJsonDBC;
-import dev.langchain4j.model.mistralai.MistralAiChatModel;
+//import dev.langchain4j.model.mistralai.MistralAiChatModel;
 import dev.langchain4j.model.chat.ChatModel;
 import java.nio.file.Files;
 import java.nio.file.Path;
