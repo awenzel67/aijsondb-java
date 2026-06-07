@@ -8,8 +8,8 @@ void main(String... args) {
         com.google.gson.JsonElement result = AIJsonDBC.query("var result=data.employees.length;");
         System.out.println("Query result: " + result);
         // Javascript Expression containing an error.
-        result = AIJsonDBC.query("var result=data.employees.length;");
-        System.out.println("Query result: " + result);
+        //result = AIJsonDBC.query("var result=data employees.length;");
+        //System.out.println("Query result: " + result);
     } catch (RuntimeException e) {
         System.err.println("Error loading data: " + e.getMessage());
     }
