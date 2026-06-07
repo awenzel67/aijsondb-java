@@ -46,49 +46,52 @@
                                                 "type": "string",
                                                 "description": "City of the employee"
                                             },
-                                            "location": {
+                                          "location": {
+                                            "type": "object",
+                                            "description": "Location information",
+                                            "properties": {
+                                              "state": {
+                                                "type": "string",
+                                                "description": "State of the employee"
+                                              },
+                                              "country": {
+                                                "type": "string",
+                                                "description": "Country of the employee"
+                                              },
+                                              "geo": {
                                                 "type": "object",
+                                                "description": "Geographical information of the employee's location",
                                                 "properties": {
-                                                    "state": {
+                                                  "lat": {
+                                                    "type": "number",
+                                                    "description": "Latitude of the employee's location"
+                                                  },
+                                                  "long": {
+                                                    "type": "number",
+                                                    "description": "Longitude of the employee's location"
+                                                  },
+                                                  "timezone": {
+                                                    "type": "object",
+                                                    "description": "Timezone information of the employee's location",
+                                                    "properties": {
+                                                      "name": {
                                                         "type": "string",
-                                                        "description": "State of the employee"
-                                                    },
-                                                    "country": {
+                                                        "description": "Name of the timezone"
+                                                      },
+                                                      "utc_offset": {
                                                         "type": "string",
-                                                        "description": "Country of the employee"
+                                                        "description": "UTC offset of the timezone"
+                                                      }
                                                     },
-                                                    "geo": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "lat": {
-                                                                "type": "string",
-                                                                "description": "Latitude of the employee's location"
-                                                            },
-                                                            "long": {
-                                                                "type": "string",
-                                                                "description": "Longitude of the employee's location"
-                                                            },
-                                                            "timezone": {
-                                                                "type": "object",
-                                                                "properties": {
-                                                                    "name": {
-                                                                        "type": "string",
-                                                                        "description": "Name of the timezone"
-                                                                    },
-                                                                    "utc_offset": {
-                                                                        "type": "string",
-                                                                        "description": "UTC offset of the timezone"
-                                                                    }
-                                                                },
-                                                                "required": [
-                                                                    "name",
-                                                                    "utc_offset"
-                                                                ]
-                                                            }
-                                                        }
-                                                    }
+                                                    "required": [
+                                                      "name",
+                                                      "utc_offset"
+                                                    ]
+                                                  }
                                                 }
+                                              }
                                             }
+                                          }
                                         },
                                         "required": [
                                             "city",
@@ -198,10 +201,11 @@
                                                                                                 "type": "boolean",
                                                                                                 "description": "Whether the certification is verified"
                                                                                             },
-                                                                                            "lastUpdated": {
-                                                                                                "type": "string",
-                                                                                                "description": "Last updated timestamp for the certifications"
-                                                                                            }
+                                                                                          "lastUpdated": {
+                                                                                            "type": "string",
+                                                                                            "format": "date",
+                                                                                            "description": "Date when the certification was last updated. It is an ISO 8601 date string."
+                                                                                          }
                                                                                         }
                                                                                     }
                                                                                 }

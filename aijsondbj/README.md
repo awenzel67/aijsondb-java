@@ -4,11 +4,11 @@ Java bindings for aijsondb - a thin wrapper on the [aijsondb C++ library](https:
 
 ## Overview
 
-AIJsonDB-Java provides Java bindings for the aijsondb library, enabling JSON data querying with JavaScript from Java applications. It uses Java 22's Foreign Function & Memory API (FFM API, JEP 454) to interface with the native aijsondb C++ library, offering a seamless integration experience.
+aijsondb-java provides Java bindings for the aijsondb library, enabling JSON data querying with JavaScript from Java applications. It uses Java 22's Foreign Function & Memory API (FFM API, JEP 454) to interface with the native aijsondb C++ library, offering a seamless integration experience.
 
 ## Installation
 
-Add AIJsonDB-Java as a Maven dependency to your project:
+Add aijsondb-java as a Maven dependency to your project:
 
 ```xml
 <dependency>
@@ -143,6 +143,11 @@ try {
 
 - [aijsondb C++ Library](https://github.com/awenzel67/aijsondb) - The core C++ library that this Java wrapper interfaces with
 
-## License
+## Building
 
-Apache License 2.0
+To build this project from source:
+
+```bash
+mvn compile
+mvn package
+```

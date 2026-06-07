@@ -1,15 +1,15 @@
-# AijsonDB Agent Library
+# aijsondb Agent Library
 
-**aijsondbjagent** is a Java library that contains helper methods to make it easy to create an AI agent that can **"talk to your data"** using [AijsonDB](https://github.com/awenzel67/aijsondb) and [langchain4j](https://github.com/langchain4j/langchain4j).
+**aijsondbjagent** is a Java library that contains helper methods to make it easy to create an AI agent that can **"talk to your data"** using [aijsondb](https://github.com/awenzel67/aijsondb) and [langchain4j](https://github.com/langchain4j/langchain4j).
 
-This library simplifies the process of loading JSON data, creating agents with appropriate system prompts, and querying data using natural language questions.
+This library simplifies the process of loading data, creating agents with appropriate system prompts, and querying data using natural language questions.
 
 ## Features
 
 - **Easy Agent Creation**: Quickly create AI agents that can understand and query your JSON data
 - **Natural Language Queries**: Ask questions in plain English and get answers from your data
-- **Flexible Data Loading**: Load data from JSON files with schema support
-- **Multiple Prompt Templates**: Support for different AI models (Generic, Mistral, etc.)
+- **Flexible Data Loading**: Load data from JSON or Excel files with schema support
+- **Multiple Prompt Templates**: Support for different AI models (OpenAI, Mistral and Ollama for local inference)
 - **Integration with langchain4j**: Built on top of the powerful langchain4j framework
 
 ## Installation
@@ -44,7 +44,7 @@ Instead you can also use a XLSX file (Excel) directly as datasource. JSON data a
        
 ```
 
-Now you can create your langchain4j  AI agent using the tools for aijsondb and the corresponding systemporompt:
+Now you can create your langchain4j  AI agent using the tools for aijsondb and the corresponding systemprompt:
 ```java
  Agent.AIJsonAgent agent = AiServices.builder(Agent.AIJsonAgent.class)
                 .chatModel(model)

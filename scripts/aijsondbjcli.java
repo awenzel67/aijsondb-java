@@ -4,7 +4,7 @@
 import io.github.awenzel67.AIJsonDBC;
 void main(String... args) {
     try {
-        AIJsonDBC.loadData("../data/500 KB_V2.json","../data/employeeSchemaDescription_V2.json");
+        AIJsonDBC.loadData("../data/500 KB_V3.json","../data/employeeSchemaDescription_V3.json");
         com.google.gson.JsonElement result = AIJsonDBC.query("var result=data.employees.length;");
         System.out.println("Query result: " + result);
         // Javascript Expression containing an error.
