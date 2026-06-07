@@ -28,9 +28,9 @@ See the corresponding README files for details.
 
 Samples and sample data can be found here:
 - `aijsondbjweb/` - Spring Boot WebApplication for uploading Excel files and analyzing them with natural language questions. 
-- `scripts/` - Example scripts including 
-  - `aijsondbjcli.java` query XLSX (Excel) file with JavaScript
-  - `aijsondbjlangchain.java` create an langchain4j AI Agent to talk witch XLSX (Excel) files using Mistar AI, OpenAO or Ollama.
+- `scripts/` - Example scripts to use with jbang including 
+  - `aijsondbjcli.java` query XLSX (Excel) file with JavaScript. (`jbang aijsondbjcli.java`)
+  - `aijsondbjlangchain.java` create an langchain4j AI Agent to talk witch XLSX (Excel) files using Mistar AI, OpenAO or Ollama. (`jbang aijsondbjlangchain.java`)
 - `data/` - Sample data files
   - `500 KB_V3.json` - Syntetic employees JSON dataset.
   - `employeeSchemaDescription_V3.json` - JSON Schema for employees dataset.
