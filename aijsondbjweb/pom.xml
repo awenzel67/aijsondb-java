@@ -13,9 +13,9 @@
     
     <groupId>io.github.awenzel67</groupId>
     <artifactId>aijsondbweb</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.7</version>
     <name>aijsondbweb</name>
-    <description>AI JSON DB Web - Natural Language Excel Query Application</description>
+    <description>AIJSONDB Web - Natural Language Excel Query Application</description>
     
     <properties>
         <java.version>21</java.version>
@@ -62,7 +62,12 @@
         <dependency>
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark</artifactId>
-            <version>0.21.0</version>
+            <version>0.28.0</version>
+        </dependency>
+        <dependency>
+          <groupId>org.commonmark</groupId>
+          <artifactId>commonmark-ext-gfm-tables</artifactId>
+          <version>0.28.0</version>
         </dependency>
          <dependency>
             <groupId>dev.langchain4j</groupId>

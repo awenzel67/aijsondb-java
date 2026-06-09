@@ -12,6 +12,12 @@ import dev.langchain4j.service.AiServices;
 
 import java.util.Random;
 import java.util.function.Function;
+import java.io.*;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Analyser {
     private Agent aiJsonAgent = new Agent();    
@@ -23,18 +29,18 @@ public class Analyser {
 
     public void importData(String fileNameImport) throws Exception {
         // Dummy implementation - will be implemented later
-        System.out.println("Importing data from: " + fileNameImport);
+        //System.out.println("Importing data from: " + fileNameImport);
          int randomInt = random.nextInt(1000);
          String baseDir="uploads/";
-         String dataFile=baseDir+"excel_temp_kita_"+randomInt+".json";
-        String schemaFile=baseDir+"excel_temp_kita_schema_"+randomInt+".json";
+         String dataFile=baseDir+"excel_temp_"+randomInt+".json";
+        String schemaFile=baseDir+"excel_temp_schema_"+randomInt+".json";
         aiJsonAgent.importData(fileNameImport, dataFile, schemaFile, Agent.E_PROMPT_TEMPLATE.GENERIC);
     }
 
     public String analyse(String question, Options options) throws Exception {
-            createAgent(options);
-             String sanswer = dynamicSystemMessageAgent.chat("1", question); 
-             return sanswer;
+        createAgent(options);
+        String sanswer = dynamicSystemMessageAgent.chat("1", question); 
+        return sanswer;
     }
     private void createAgent(Options options) {
         if (this.dynamicSystemMessageAgent==null) {
